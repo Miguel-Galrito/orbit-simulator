@@ -6,7 +6,7 @@ gravitational n-body dynamics using a 4th-order Runge-Kutta (RK4) integrator,
 with a simplified Solar System, a binary star system, an Earth–Moon–satellite
 system, and a chaotic 3-body scenario as presets.
 
-**[Live demo →](#)** *[(replace with your GitHub Pages link once deployed)](https://Miguel-Galrito.github.io/orbit-simulator)*
+**[Live demo →](#)** *[https://Miguel-Galrito.github.io/orbit-simulator](https://Miguel-Galrito.github.io/orbit-simulator)*
 
 ## Why this project
 
