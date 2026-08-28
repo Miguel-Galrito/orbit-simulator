@@ -3,11 +3,11 @@
 import math
 import streamlit as st
 
-from .domain.constants import DAY, EARTH_MU, EARTH_RADIUS
-from .domain.elements import OrbitalElements
-from .domain.metrics import eccentricity, period, semi_major_axis, specific_energy
-from .simulation.propagator import propagate
-from .visualization.plot import plot_trajectory
+from orbit_simulator.domain.constants import EARTH_MU, EARTH_RADIUS
+from orbit_simulator.domain.elements import OrbitalElements
+from orbit_simulator.domain.metrics import eccentricity, period, semi_major_axis, specific_energy
+from orbit_simulator.simulation.propagator import propagate
+from orbit_simulator.visualization.plot import plot_trajectory
 
 st.set_page_config(page_title="Orbit Simulator", page_icon="🛰️", layout="wide")
 st.title("🛰️ Orbit Simulator")
@@ -32,7 +32,7 @@ elements = OrbitalElements(
     inclination=math.radians(inclination_deg),
 )
 state = elements.to_state(EARTH_MU)
-times, states = propagate(state, duration_orbits * period_s, period_s / steps_per_orbit, EARTH_MU)
+_, states = propagate(state, duration_orbits * period_s, period_s / steps_per_orbit, EARTH_MU)
 
 fig = plot_trajectory(states, "Earth-centered two-body orbit")
 st.pyplot(fig, use_container_width=True)
