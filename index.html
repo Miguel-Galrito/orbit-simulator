@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orbit Simulator — N-Body Gravity Sandbox</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <canvas id="canvas"></canvas>
+
+  <div class="panel">
+    <h1>Orbit Simulator</h1>
+    <p class="subtitle">N-body gravity, integrated with RK4</p>
+
+    <div class="row">
+      <label>Preset</label>
+      <select id="preset">
+        <option value="solar">Simplified Solar System</option>
+        <option value="binary">Binary Star</option>
+        <option value="earthmoon">Earth + Moon + Satellite</option>
+        <option value="chaos">Random 3-Body (chaotic)</option>
+      </select>
+    </div>
+
+    <div class="row buttons">
+      <button id="playBtn">Pause</button>
+      <button id="resetBtn">Reset</button>
+      <button id="trailBtn">Trails: On</button>
+    </div>
+
+    <div class="row">
+      <label>Time step (speed)</label>
+      <input type="range" id="speed" min="1" max="40" value="8">
+    </div>
+
+    <div class="row">
+      <label>Zoom</label>
+      <input type="range" id="zoom" min="10" max="400" value="100">
+    </div>
+
+    <div class="stats">
+      <div>Simulated time: <span id="simTime">0</span> days</div>
+      <div>Bodies: <span id="bodyCount">0</span></div>
+      <div>Total energy drift: <span id="energyDrift">0.00%</span></div>
+    </div>
+
+    <details class="add-body">
+      <summary>Add a body</summary>
+      <div class="add-form">
+        <input type="text" id="bName" placeholder="Name" value="New body">
+        <input type="number" id="bMass" placeholder="Mass (Earth masses)" value="1">
+        <input type="number" id="bX" placeholder="X (AU)" value="1">
+        <input type="number" id="bY" placeholder="Y (AU)" value="0">
+        <input type="number" id="bVX" placeholder="vX (km/s)" value="0">
+        <input type="number" id="bVY" placeholder="vY (km/s)" value="20">
+        <input type="color" id="bColor" value="#4fd6ff">
+        <button id="addBtn">Add body</button>
+      </div>
+    </details>
+
+    <p class="hint">Drag canvas to pan · Scroll or slider to zoom · Click a body to select it</p>
+  </div>
+
+  <div class="selected-info" id="selectedInfo"></div>
+</div>
+
+<script src="physics.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
