@@ -1,1 +1,0 @@
-"""Numerical simulation package."""
